@@ -24,34 +24,34 @@ Pygameで麻雀をモチーフにしたパズルゲームを遊ぶことがで�
 # **役**
 
 ## **四暗刻**
-![四暗刻](img/su-ankou.png)
+![四暗刻](README_img/su-ankou.png)
 同じ牌を三つ集めた刻子が四つあると成立します。
 ## **字一色**
-![字一色](img/tsu-i-so-.png)
+![字一色](README_img/tsu-i-so-.png)
 字牌のみでアガリをすると成立します。
 ## **緑一色**
-![緑一色](img/ryu-i-so-.png)
+![緑一色](README_img/ryu-i-so-.png)
 緑色の牌(索子の二、三、四、六、八、及び字牌の發)のみでアガリをすると成立します。
 ## **大三元**
-![大三元](img/daisangen.png)
+![大三元](README_img/daisangen.png)
 三元牌(白、發、中)の刻子をすべて集めると成立します。
 ## **小四喜**
-![小四喜](img/syousu-si-.png)
+![小四喜](README_img/syousu-si-.png)
 風牌(東、南、西、北)のうち一つを雀頭として手牌に持ち、残りの風牌の刻子をすべて集めると成り立ちます。
 ## **大四喜**
-![大四喜](img/daisu-si-.png)
+![大四喜](README_img/daisu-si-.png)
 風牌の刻子をすべて集めると成立します。
 ## **清老頭**
-![清老頭](img/chinro-to-.png)
+![清老頭](README_img/chinro-to-.png)
 風牌の刻子をすべて集めると成立します。
 ## **九蓮宝燈**
-![九蓮宝燈](img/churenpoutou.png)
+![九蓮宝燈](README_img/churenpoutou.png)
 数牌のスートを一種に絞り、一、九を三枚、ほかの数字を一枚ずつ揃え、加えて同じスートの牌をもう一つ持っていると成立します。
 ## **国士無双**
-![国士無双](img/kokusimusou.png)
+![国士無双](README_img/kokusimusou.png)
 么九牌(数牌の一、九、及びすべての字牌)を一枚ずつ揃え、加えて么九牌をもう一つ持っていると成立します。
 ## **万象統一**
-![万象統一](img/bansyoutouitu.png)
+![万象統一](README_img/bansyoutouitu.png)
 同じ牌を14枚集めると成立します。後述する追加得点には選ばれません。<br>
 ※天和、ローカル役満はありません
 ※アガリをすると、役満の倍数の分制限時間が伸びます
