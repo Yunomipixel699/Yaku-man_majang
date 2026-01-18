@@ -410,7 +410,7 @@ class timer():
         self.x = 850
         self.y = 30
         self.flame = 0
-        self.min = 0
+        self.min = 2
         self.sec = 0
         
     def update(self):
