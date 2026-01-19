@@ -65,7 +65,7 @@ Pygameで麻雀をモチーフにしたパズルゲームを遊ぶことがで�
 ここだけの話、万象統一に関しては、同じ牌を集めるのが面倒なので、インパクト以外は長所がありません。
 
 ## 制作期間
-2025年12月～2025年1月
+2025年12月～2026年1月
 
 # License
 Copyright 2020 The DotGothic16 Project Authors (https://github.com/fontworks-fonts/DotGothic16)
