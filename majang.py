@@ -55,7 +55,6 @@ class Tile:
     def clicked(self, mouse_pos):
         self.tile_rect = pg.Rect(self.x, self.y, 64, 96)
         if self.tile_rect.collidepoint(mouse_pos):
-            print("clicked")
             return True
         else:
             return False
@@ -71,11 +70,9 @@ class Tile:
         diff_x = self.target_x - self.x
         diff_y = self.target_y - self.y
         
-        # 少しずつ移動（30%ずつ近づく）
         self.x += diff_x * 0.3
         self.y += diff_y * 0.3
         
-        # ほぼ到達したら、きっちり目標位置にする
         if abs(diff_x) < 0.5:
             self.x = self.target_x
         if abs(diff_y) < 0.5:
@@ -121,24 +118,20 @@ class Hand:
             self.tsumo_tile.draw(screen)
 
     def clicked(self, mouse_pos):
-        # 手牌をチェック
         for i, tile in enumerate(self.tiles):
             if tile.clicked(mouse_pos):
-                discarded_tile = self.tiles.pop(i)  # ★捨てた牌を保存
+                discarded_tile = self.tiles.pop(i)
                 self.tiles.append(self.tsumo_tile)
                 self.rearrange()
-                self.tsumo_tile = None  # ★忘れずにクリア
-                print(f"手牌の{i+1}番目を捨てた")
-                return discarded_tile  # ★捨てた牌を返す
+                self.tsumo_tile = None
+                return discarded_tile
         
-        # ツモ牌をチェック
         if self.tsumo_tile and self.tsumo_tile.clicked(mouse_pos):
-            discarded_tile = self.tsumo_tile  # ★捨てた牌を保存
+            discarded_tile = self.tsumo_tile
             self.tsumo_tile = None
-            print("ツモ牌を捨てた")
-            return discarded_tile  # ★捨てた牌を返す
+            return discarded_tile
         
-        return None  # ★何も捨てていない
+        return None
 
     def agari(self,tsumo_tile,agari):
         yaku_list = []
@@ -153,20 +146,15 @@ class Hand:
         for tile in agari_hand:
             tuple_list.append(tile.tile_tuple)
         tuple_list.append(tsumo_tile)
-        print(tuple_list)
 
         all_number = [tile[0] for tile in tuple_list]
         tile_list = list(set(tuple_list))
         number_list = list(set(all_number))
         suit_list = list(set([tile[1] for tile in tuple_list]))
-        print(number_list)
 
         if all(tile in tuple_list for tile in [(1,1),(9,1),(1,2),(9,2),(1,3),(9,3),(1,4),(2,4),(3,4),(4,4),(5,4),(6,4),(7,4)]):
             if len(tile_list) == 13:
                 yaku_list.append(("国士無双",4))
-                print(tile_list)
-                print("国士無双確定！")
-                print(f"役：{yaku_list}")
                 return [magnification[1] for magnification in yaku_list]
             else:
                 return 0
@@ -177,13 +165,10 @@ class Hand:
             kotsu = []
             syuntsu = []
             
-            print(f"--- 試行 {i}: 雀頭候補 {jantou} ---")
-            
             if tile_count >= 2:
                 
                 for j in range(2):
                     remain_tile.remove(jantou)
-                print(f"雀頭除去後: {remain_tile}")
                 
                 is_removed = True
                 while is_removed:
@@ -194,7 +179,6 @@ class Hand:
                             kotsu.append(tile)
                             for k in range(3):
                                 remain_tile.remove(tile)
-                            print(f"刻子 {tile} 除去後: {remain_tile}")
                             is_removed = True
                             break
                 
@@ -207,19 +191,13 @@ class Hand:
                             syuntsu.append(((number, number+1, number+2), suit))
                             for k in range(3):
                                 remain_tile.remove((number+k, suit))
-                            print(f"順子 {number}-{number+1}-{number+2} ({suit}) 除去後: {remain_tile}")
                             is_removed = True
                             break
                 
-                print(f"最終残り: {remain_tile}")
-                print(f"刻子: {kotsu}, 順子: {syuntsu}")
-                
                 if len(remain_tile) == 0:
-                    print("面子確定")
                     kotsu_list.append(kotsu)
                     syuntsu_list.append(syuntsu)
                     jantou_list.append(jantou)
-                print()
 
         sev_toitsu = True
         for i,tile in enumerate(tile_list):
@@ -263,10 +241,6 @@ class Hand:
                     yaku_list.append(("万象統一",4))
 
         yaku_list = list(set(yaku_list))
-        for i in range(len(yaku_list)):
-            print(yaku_list[i])
-        print(f"役：{yaku_list}")
-        print(jantou_list)
         if yaku_list == []:
             return 0
         else:
@@ -280,7 +254,6 @@ class Hand:
 
         for tile in agari_hand:
             tuple_list.append(tile.tile_tuple)
-        print(tuple_list)
 
         tuple_list = list(set(tuple_list))
         test_list = tuple_list.copy()
@@ -298,19 +271,9 @@ class Hand:
             if self.agari(test_tsumo,False):
                 wait_tile.append(test_tsumo)
         
-        if wait_list == []:
-            print("聴牌ではありません")
-            print(f'testing:{test_list}')
-            print(wait_list)
-        else:
-            print(test_list)
-            print(f"聴牌！待ち牌: {wait_tile}")
-            print(wait_list)
-        
         return wait_tile
 
     def rearrange(self):
-        """牌の位置を再配置"""
         self.tiles.sort(key=lambda t: t.tile_code)
         for i, tile in enumerate(self.tiles):
             tile.target_x = self.start_x + i * self.tile_width + self.margin
@@ -335,8 +298,6 @@ class Trash:
         self.tiles_per_row = 12  # 1行に6枚
     
     def add_tile(self, tile):
-        """牌を捨て牌に追加（Tileオブジェクトをそのまま受け取る）"""
-        # 位置を更新
         tile.target_y = self.y
         tile.hovered = False
         
@@ -346,17 +307,14 @@ class Trash:
         self.rearrange()
 
     def draw(self, screen):
-        """捨て牌を描画"""
         for tile in self.tiles:
             tile.draw(screen)
 
     def clicked(self, mouse_pos):
-        # 手牌をチェック
         for i, tile in enumerate(self.tiles):
             if tile.clicked(mouse_pos):
-                discarded_tile = self.tiles.pop(i)  # ★捨てた牌を保存
-                print("ツモ牌を捨てた")
-                return discarded_tile   # ★捨てた牌を返す
+                discarded_tile = self.tiles.pop(i)
+                return discarded_tile
             
         return None
 
@@ -652,8 +610,6 @@ def majang():
                                 yaku_name_list.append("追加得点")
                             score_plus = 32000*magnification
                             time_text.time_extend(magnification)
-                            print(magnification)
-                            print(score_plus)
                             yaku_text = yaku_container(yaku_name_list,magnification,score_plus,False)
                             bonus = r.choice(bonus_list)
                             bonus_text.update(bonus)
@@ -664,7 +620,6 @@ def majang():
                             yaku_name_list = ['誤ツモ...']
                             score_plus = -32000
                             yaku_text = yaku_container(yaku_name_list,magnification,score_plus,False)
-                            print(score)
                         score += score_plus
                         score_text.scored(score)
                         
