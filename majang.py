@@ -155,7 +155,7 @@ class Hand:
         if all(tile in tuple_list for tile in [(1,1),(9,1),(1,2),(9,2),(1,3),(9,3),(1,4),(2,4),(3,4),(4,4),(5,4),(6,4),(7,4)]):
             if len(tile_list) == 13:
                 yaku_list.append(("国士無双",4))
-                return [magnification[1] for magnification in yaku_list]
+                return yaku_list
             else:
                 return 0
             
@@ -285,7 +285,7 @@ class Hand:
     def hover(self, mouse_pos):
         for tile in self.tiles:
             tile.hover(mouse_pos)
-        if self.tsumo_tile:  # ★Noneチェック
+        if self.tsumo_tile:
             self.tsumo_tile.hover(mouse_pos)
 
 class Trash:
@@ -293,9 +293,9 @@ class Trash:
         self.tiles = []
         self.tile_sheet = tile_sheet
         self.tile_width = 68
-        self.start_x = 40  # 捨て牌エリアの開始位置
+        self.start_x = 40
         self.y = 350
-        self.tiles_per_row = 12  # 1行に6枚
+        self.tiles_per_row = 12
     
     def add_tile(self, tile):
         tile.target_y = self.y
