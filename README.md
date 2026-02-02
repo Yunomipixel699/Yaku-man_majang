@@ -68,8 +68,5 @@ Pygameで麻雀をモチーフにしたパズルゲームを遊ぶことがで�
 ## 制作期間
 2025年12月～2026年1月
 
-# License
-Copyright 2020 The DotGothic16 Project Authors (https://github.com/fontworks-fonts/DotGothic16)
-This Font Software is licensed under the SIL Open Font License, Version 1.1 . This license is copied below, and is also available with a FAQ at: https://openfontlicense.org
-
-SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+# ライセンスについて
+このアプリケーションには[DotGothic16](https://fonts.google.com/specimen/DotGothic16)が使用されています。このフォントはSIL Open Font License, Version 1.1のもとに公開されています。詳細はLICENSE.txtを参照してください。
