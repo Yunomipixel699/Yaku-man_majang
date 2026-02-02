@@ -1,4 +1,5 @@
 # 役満麻雀
+![タイトル](README_img/title.png)
 Pygameで麻雀をモチーフにしたパズルゲームを遊ぶことができるプログラムです。
 # ルール
 ![ルール](README_img/main_screen.png)
