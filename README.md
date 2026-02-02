@@ -69,4 +69,4 @@ Pygameで麻雀をモチーフにしたパズルゲームを遊ぶことがで�
 2025年12月～2026年1月
 
 # ライセンスについて
-このアプリケーションには[DotGothic16](https://fonts.google.com/specimen/DotGothic16)が使用されています。このフォントはSIL Open Font License, Version 1.1のもとに公開されています。詳細はLICENSE.txtを参照してください。
+このアプリケーションには[DotGothic16](https://fonts.google.com/specimen/DotGothic16)が使用されています。このフォントはSIL Open Font License, Version 1.1のもとに公開されています。詳細は[LICENSE.txt](https://github.com/Yunomipixel699/Yaku-man_majang/blob/main/LICENSE.txt)を参照してください。
